@@ -205,11 +205,6 @@ ja:
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
     pm: 午後
-  books: "書籍管理"
-  title: "題名"
-  memo: "メモ"
-  author: "著者"
-  picture: "題名"
   show: "詳細"
   edit: "編集"
   destroy: "削除"
