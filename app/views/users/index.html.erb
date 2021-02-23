@@ -4,6 +4,7 @@
   <thead>
     <tr>
       <th><%= User.human_attribute_name(:id) %></th>
+      <th><%= User.human_attribute_name(:name) %></th>
       <th><%= User.human_attribute_name(:email) %></th>
       <th colspan="1"></th>
     </tr>
@@ -13,6 +14,7 @@
     <% @users.each do |user| %>
       <tr>
         <td><%= user.id %></td>
+        <td><%= user.name %></td>
         <td><%= user.email %></td>
         <td><%= link_to t('views.common.show'), url_for(controller: :users, action: :show, id: user.id) %></td>
       </tr>
