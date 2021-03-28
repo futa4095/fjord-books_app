@@ -226,6 +226,7 @@ ja:
       truncate: '...'
     users:
       follow: "フォローする"
+      unfollow: "フォローを解除する"
       followers: "フォロワー一覧"
       followings: "フォロー一覧"
       followers_count: "フォロワー数"
