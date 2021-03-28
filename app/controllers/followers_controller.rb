@@ -9,13 +9,13 @@ class FollowersController < ApplicationController
 
   def create
     @user.followers << current_user
-    redirect_to @user
+    redirect_to @user, notice: t('controllers.followers.notice_create')
   end
 
   def destroy
     @follow = Follow.find(params[:id])
     @follow.destroy
-    redirect_to @user
+    redirect_to @user, notice: t('controllers.followers.notice_destroy')
   end
 
   private
