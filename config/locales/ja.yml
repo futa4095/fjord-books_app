@@ -224,6 +224,13 @@ ja:
       previous: '前'
       next: '次'
       truncate: '...'
+    users:
+      followers: "フォロワー一覧"
+      followings: "フォロー一覧"
+    followers:
+      title: "%{name}のフォロワー一覧"
+    followings:
+      title: "%{name}のフォロー一覧"
   controllers:
     common:
       notice_create: "%{name}が作成されました。"
