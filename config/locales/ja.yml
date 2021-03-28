@@ -227,6 +227,8 @@ ja:
     users:
       followers: "フォロワー一覧"
       followings: "フォロー一覧"
+      followers_count: "フォロワー数"
+      followings_count: "フォロー数"
     followers:
       title: "%{name}のフォロワー一覧"
     followings:
