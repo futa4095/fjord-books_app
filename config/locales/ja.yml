@@ -225,6 +225,7 @@ ja:
       next: '次'
       truncate: '...'
     users:
+      follow: "フォローする"
       followers: "フォロワー一覧"
       followings: "フォロー一覧"
       followers_count: "フォロワー数"
