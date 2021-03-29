@@ -17,3 +17,11 @@
   <%= f.label :self_introduction %>
   <%= f.text_area :self_introduction %>
 </div>
+
+<div class="field">
+  <%= f.label :avatar %>
+  <%= f.file_field :avatar %>
+  <% if current_user && current_user.avatar.attached? %>
+    <%= image_tag current_user.avatar.variant(resize: "100x100") %>
+  <% end %>
+</div>

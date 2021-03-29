@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: %i[github]
 
+  has_one_attached :avatar
+  validates :avatar, attached: true, content_type: ['image/jpg', 'image/jpeg', 'image/png', 'image/gif']
   validates :uid, uniqueness: { scope: :provider }, if: -> { uid.present? }
 
   def self.from_omniauth(auth)
