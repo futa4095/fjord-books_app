@@ -2,6 +2,7 @@
 
 class ReportsController < ApplicationController
   before_action :set_report, only: %i[show edit update destroy]
+  before_action :deny_other_user, only: %i[edit update destroy]
 
   # GET /reports
   # GET /reports.json
@@ -66,5 +67,11 @@ class ReportsController < ApplicationController
   # Only allow a list of trusted parameters through.
   def report_params
     params.require(:report).permit(:title, :body)
+  end
+
+  def deny_other_user
+    return if current_user == @report.user
+
+    redirect_to reports_path, alert: t('controllers.common.alert_deny_edit', name: Report.model_name.human)
   end
 end
