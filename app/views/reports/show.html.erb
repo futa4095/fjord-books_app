@@ -20,27 +20,7 @@
   <%= @report.user.name %>
 </p>
 
-<% @report.comments.includes(:user).each.with_index(1) do |comment, i| %>
-  <p>
-    <strong><%= Comment.model_name.human %><%= "##{i}" %>:</strong>
-    <%= simple_format comment.body %><br>
-    <%= User.human_attribute_name(:name) %>
-    <%= comment.user.name.presence || comment.user.email %><br>
-    <%= Comment.human_attribute_name(:created_at) %>
-    <%= comment.created_at.strftime(t('date.formats.default')) %>
-  </p>
-<% end %>
-
-<%= form_with(model: @report.comments.new, url: polymorphic_path([@report, Comment.new])) do |form| %>
-  <div class="field">
-    <%= form.label :body %>
-    <%= form.text_area :body, required: true %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+<%= render "shared/comments", commentable: @report %>
 
 <% if @report.user == current_user %>
   <%= link_to t('views.common.edit'), edit_report_path(@report) %> |
