@@ -15,8 +15,11 @@ class CommentsController < ApplicationController
     @comment = current_user.comments.build(comment_params)
     resource, id = request.path.split('/')[1, 2]
     @comment.commentable = resource.singularize.classify.constantize.find(id)
-    @comment.save!
-    redirect_to polymorphic_path(@comment.commentable), notice: t('controllers.common.notice_create', name: Comment.model_name.human)
+    if @comment.save
+      redirect_to polymorphic_path(@comment.commentable), notice: t('controllers.common.notice_create', name: Comment.model_name.human)
+    else
+      redirect_to polymorphic_path(@comment.commentable), alert: @comment.errors.full_messages.join("\n")
+    end
   end
 
   # PATCH/PUT /comments/1
