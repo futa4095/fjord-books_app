@@ -9,6 +9,10 @@
   </p>
 <% end %>
 
+<% if commentable.comments.empty? %>
+  <%= t 'comments.empty' %>
+<% end %>
+
 <%= form_with(model: commentable.comments.new, url: polymorphic_path([commentable, Comment.new])) do |form| %>
   <div class="field">
     <%= form.label :body %>
