@@ -6,6 +6,9 @@
     <%= comment.user.name.presence || comment.user.email %><br>
     <%= Comment.human_attribute_name(:created_at) %>
     <%= comment.created_at.strftime(t('date.formats.default')) %>
+    <% if comment.user == current_user %>
+      <%= link_to t('views.common.destroy'), [commentable, comment], method: :delete, data: { confirm: t('views.common.delete_confirm') } %>
+    <% end %>
   </p>
 <% end %>
 
