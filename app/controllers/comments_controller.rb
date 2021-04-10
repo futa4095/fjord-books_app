@@ -3,12 +3,6 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: %i[edit update destroy]
 
-  # GET /comments/new
-  def new
-    @comment = Comment.new
-  end
-
-  # GET /comments/1/edit
   def edit; end
 
   def create
@@ -22,16 +16,14 @@ class CommentsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /comments/1
   def update
     if @comment.update(comment_params)
-      redirect_to @comment, notice: t('controllers.common.notice_update', name: Comment.model_name.human)
+      redirect_to @comment.commentable, notice: t('controllers.common.notice_update', name: Comment.model_name.human)
     else
       render :edit
     end
   end
 
-  # DELETE /comments/1
   def destroy
     @comment.destroy
     redirect_to @comment.commentable, notice: t('controllers.common.notice_destroy', name: Comment.model_name.human)
