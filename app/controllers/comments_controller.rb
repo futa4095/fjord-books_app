@@ -2,6 +2,7 @@
 
 class CommentsController < ApplicationController
   before_action :set_comment, only: %i[edit update destroy]
+  before_action :deny_other_user, only: %i[edit update destroy]
 
   def edit; end
 
@@ -39,5 +40,11 @@ class CommentsController < ApplicationController
   # Only allow a list of trusted parameters through.
   def comment_params
     params.require(:comment).permit(:body)
+  end
+
+  def deny_other_user
+    return if current_user == @comment.user
+
+    redirect_to @comment.commentable, alert: t('controllers.common.alert_deny_edit', name: Comment.model_name.human)
   end
 end
