@@ -1,0 +1,28 @@
+<h1><%= t 'views.followings.title', name: @user.name %></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th><%= User.human_attribute_name(:name) %></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @followings.each do |following| %>
+      <tr>
+        <th>
+          <% if following.avatar.attached? %>
+            <%= image_tag following.avatar.variant(resize_to_fill: [30, 30])%>
+          <% end %>
+        </th>
+        <td><%= following.name %></td>
+        <td><%= link_to t('views.common.show'), following %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @followings %>
+<%= link_to t('views.common.back'), user_path(@user) %>
