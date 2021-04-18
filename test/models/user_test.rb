@@ -3,14 +3,14 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
-  test 'name_or_email' do
+  test 'should get name or email' do
     alice = users(:alice)
     assert_equal 'alice@example.com', alice.name_or_email
     alice.name = 'alice'
     assert_equal 'alice', alice.name_or_email
   end
 
-  test 'follow and unfollow' do
+  test 'should follow and unfollow' do
     alice = users(:alice)
     bob = users(:bob)
 

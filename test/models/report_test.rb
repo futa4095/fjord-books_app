@@ -3,7 +3,7 @@
 require 'test_helper'
 
 class ReportTest < ActiveSupport::TestCase
-  test 'editable' do
+  test 'should edit only posted user' do
     report = reports(:one)
     alice = users(:alice)
     assert report.editable?(alice)
@@ -11,7 +11,7 @@ class ReportTest < ActiveSupport::TestCase
     assert_not report.editable?(bob)
   end
 
-  test 'created_on' do
+  test 'should get created date' do
     report = reports(:one)
     assert_equal Date.new(2021, 4, 1), report.created_on
   end
