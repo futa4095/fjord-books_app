@@ -2,6 +2,6 @@
 
 one:
   user: alice
-  title: MyString
-  content: MyText
+  title: ユーザーフォローする
+  content: できました。
   created_at: <%= Time.local(2021, 4, 1, 10, 20, 33) %>
