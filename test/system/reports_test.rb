@@ -4,10 +4,7 @@ require 'application_system_test_case'
 
 class ReportsTest < ApplicationSystemTestCase
   setup do
-    visit root_url
-    fill_in 'Eメール', with: 'alice@example.com'
-    fill_in 'パスワード', with: 'password'
-    click_button 'ログイン'
+    login_as_alice
   end
 
   test 'visiting the index' do
