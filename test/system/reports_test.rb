@@ -46,4 +46,13 @@ class ReportsTest < ApplicationSystemTestCase
 
     assert_text '日報が削除されました。'
   end
+
+  test 'add comment to Report' do
+    visit report_url(reports(:one))
+    assert_text '（コメントがありません）'
+    fill_in 'comment_content', with: '今日は良い天気ですね'
+    click_button 'コメントする'
+    assert_text '今日は良い天気ですね'
+    assert_no_text '（コメントがありません）'
+  end
 end

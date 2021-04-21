@@ -50,4 +50,17 @@ class BooksTest < ApplicationSystemTestCase
     assert_text '本が削除されました。'
     assert_no_text '走れメロス'
   end
+
+  test 'add comment to Book' do
+    visit book_url(books(:one))
+    assert_text '（コメントがありません）'
+    fill_in 'comment_content', with: 'goodです'
+    click_button 'コメントする'
+    assert_text 'goodです'
+    assert_no_text '（コメントがありません）'
+
+    fill_in 'comment_content', with: 'excellentです'
+    click_button 'コメントする'
+    assert_text 'excellentです'
+  end
 end
