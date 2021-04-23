@@ -3,22 +3,21 @@
 require 'application_system_test_case'
 
 class UsersTest < ApplicationSystemTestCase
-  setup do
-    login_as_alice
-  end
-
   test 'visiting the index' do
+    login_as_alice
     visit users_url
     assert_selector 'h1', text: 'ユーザ'
   end
 
   test 'show a User' do
+    login_as_alice
     visit users_url
     click_on '詳細', match: :first
     assert_text 'bob@example.com'
   end
 
   test 'follow a User' do
+    login_as_alice
     visit user_url(users(:bob))
     assert_text '0 フォロワー'
     click_on 'フォローする'
@@ -30,6 +29,7 @@ class UsersTest < ApplicationSystemTestCase
   end
 
   test 'edit a User' do
+    login_as_alice
     click_on 'アカウント編集'
     fill_in '氏名', with: 'アリス'
     click_on '更新'
@@ -38,10 +38,17 @@ class UsersTest < ApplicationSystemTestCase
   end
 
   test 'destroying a User' do
+    login_as_alice
     click_on 'アカウント編集'
     page.accept_confirm do
       click_on 'アカウント削除'
     end
     assert_text 'アカウントを削除しました。'
+  end
+
+  test 'login with github' do
+    visit root_url
+    click_on 'GitHubでログイン'
+    assert_text 'GitHub アカウントによる認証に成功しました。'
   end
 end
