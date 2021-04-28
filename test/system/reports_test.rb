@@ -48,7 +48,8 @@ class ReportsTest < ApplicationSystemTestCase
   end
 
   test 'add comment to Report' do
-    visit report_url(reports(:one))
+    visit reports_url
+    click_on '詳細'
     assert_text '（コメントがありません）'
     fill_in 'comment_content', with: '今日は良い天気ですね'
     click_button 'コメントする'

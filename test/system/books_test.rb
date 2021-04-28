@@ -5,6 +5,7 @@ require 'application_system_test_case'
 class BooksTest < ApplicationSystemTestCase
   setup do
     login_as_alice
+    create(:book)
   end
 
   test 'visiting the index' do
@@ -52,7 +53,8 @@ class BooksTest < ApplicationSystemTestCase
   end
 
   test 'add comment to Book' do
-    visit book_url(books(:one))
+    visit books_url
+    click_on '詳細'
     assert_text '（コメントがありません）'
     fill_in 'comment_content', with: 'goodです'
     click_button 'コメントする'

@@ -13,12 +13,13 @@ class UsersTest < ApplicationSystemTestCase
     login_as_alice
     visit users_url
     click_on '詳細', match: :first
-    assert_text 'bob@example.com'
+    assert_text 'alice@example.com'
   end
 
   test 'follow a User' do
     login_as_alice
-    visit user_url(users(:bob))
+    bob = create(:bob)
+    visit user_url(bob)
     assert_text '0 フォロワー'
     click_on 'フォローする'
     assert_text '1 フォロワー'
